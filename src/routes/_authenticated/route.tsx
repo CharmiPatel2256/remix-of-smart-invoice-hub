@@ -53,7 +53,7 @@ function Shell() {
       <Sidebar>
         <SidebarHeader>
           <Link to="/dashboard" className="flex items-center gap-2 px-2 py-3">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold">L</div>
+            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm">IV</div>
             <span className="font-display font-semibold">InvoiceVision</span>
           </Link>
         </SidebarHeader>

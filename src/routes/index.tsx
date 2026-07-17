@@ -12,7 +12,7 @@ function Landing() {
       <header className="border-b bg-background/80 backdrop-blur sticky top-0 z-40">
         <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold">L</div>
+            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-xs">IV</div>
             <span className="font-display font-semibold text-lg">InvoiceVision</span>
           </Link>
           <nav className="flex items-center gap-3">
