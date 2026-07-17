@@ -13,7 +13,7 @@ function Landing() {
         <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
           <Link to="/" className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold">L</div>
-            <span className="font-display font-semibold text-lg">Ledgerly</span>
+            <span className="font-display font-semibold text-lg">InvoiceVision</span>
           </Link>
           <nav className="flex items-center gap-3">
             <Link to="/auth"><Button variant="ghost">Sign in</Button></Link>
@@ -32,7 +32,7 @@ function Landing() {
             Turn every invoice into <span className="text-primary">clean data</span>, instantly.
           </h1>
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
-            Upload PDFs or photos of your invoices. Ledgerly extracts every line, flags duplicates
+            Upload PDFs or photos of your invoices. InvoiceVision extracts every line, flags duplicates
             and anomalies, and gives your team a real-time view of what you're spending.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -83,7 +83,7 @@ function Landing() {
         <div className="max-w-6xl mx-auto px-6 py-8 flex items-center justify-between text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
             <FileText className="w-4 h-4" />
-            <span>Ledgerly · Smart invoice processing</span>
+            <span>InvoiceVision · Smart invoice processing</span>
           </div>
           <div>© {new Date().getFullYear()}</div>
         </div>

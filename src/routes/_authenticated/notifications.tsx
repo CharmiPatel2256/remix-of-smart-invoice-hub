@@ -8,7 +8,7 @@ import { Bell, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/_authenticated/notifications")({
-  head: () => ({ meta: [{ title: "Notifications · Ledgerly" }] }),
+  head: () => ({ meta: [{ title: "Notifications · InvoiceVision" }] }),
   component: Notifications,
 });
 

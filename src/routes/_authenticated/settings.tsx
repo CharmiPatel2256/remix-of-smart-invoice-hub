@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/_authenticated/settings")({
-  head: () => ({ meta: [{ title: "Settings · Ledgerly" }] }),
+  head: () => ({ meta: [{ title: "Settings · InvoiceVision" }] }),
   component: Settings,
 });
 
@@ -35,7 +35,7 @@ function Settings() {
       <Card>
         <CardHeader><CardTitle>About</CardTitle></CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-1">
-          <p>Ledgerly — Smart Invoice Processing.</p>
+          <p>InvoiceVision — Smart Invoice Processing.</p>
           <p>Powered by Lovable Cloud + AI Gateway (Gemini).</p>
         </CardContent>
       </Card>

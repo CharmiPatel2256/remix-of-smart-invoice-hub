@@ -7,7 +7,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LineChart, Line, CartesianGrid, PieChart, Pie, Cell, Legend } from "recharts";
 
 export const Route = createFileRoute("/_authenticated/analytics")({
-  head: () => ({ meta: [{ title: "Analytics · Ledgerly" }] }),
+  head: () => ({ meta: [{ title: "Analytics · InvoiceVision" }] }),
   component: Analytics,
 });
 

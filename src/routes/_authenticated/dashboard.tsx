@@ -9,7 +9,7 @@ import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, 
 import { FileText, Clock, CheckCircle2, DollarSign, AlertTriangle } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
-  head: () => ({ meta: [{ title: "Dashboard · Ledgerly" }] }),
+  head: () => ({ meta: [{ title: "Dashboard · InvoiceVision" }] }),
   component: Dashboard,
 });
 

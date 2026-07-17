@@ -79,13 +79,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Ledgerly — AI-powered invoice processing" },
+      { title: "InvoiceVision — AI-powered invoice processing" },
       {
         name: "description",
         content:
           "Extract, organize, and analyze invoices automatically. Upload PDFs or photos and let AI handle the rest.",
       },
-      { property: "og:title", content: "Ledgerly — AI-powered invoice processing" },
+      { property: "og:title", content: "InvoiceVision — AI-powered invoice processing" },
       {
         property: "og:description",
         content:
