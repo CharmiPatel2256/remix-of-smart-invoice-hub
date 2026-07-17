@@ -14,7 +14,7 @@ import { useState } from "react";
 import * as XLSX from "xlsx";
 
 export const Route = createFileRoute("/_authenticated/invoices/")({
-  head: () => ({ meta: [{ title: "Invoices · Ledgerly" }] }),
+  head: () => ({ meta: [{ title: "Invoices · InvoiceVision" }] }),
   component: InvoicesList,
 });
 

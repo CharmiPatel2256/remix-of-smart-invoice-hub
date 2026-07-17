@@ -9,7 +9,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/_authenticated/invoices/upload")({
-  head: () => ({ meta: [{ title: "Upload invoice · Ledgerly" }] }),
+  head: () => ({ meta: [{ title: "Upload invoice · InvoiceVision" }] }),
   component: UploadPage,
 });
 

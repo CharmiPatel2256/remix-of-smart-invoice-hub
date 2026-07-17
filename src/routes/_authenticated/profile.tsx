@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/_authenticated/profile")({
-  head: () => ({ meta: [{ title: "Profile · Ledgerly" }] }),
+  head: () => ({ meta: [{ title: "Profile · InvoiceVision" }] }),
   component: Profile,
 });
 

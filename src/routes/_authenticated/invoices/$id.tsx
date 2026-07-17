@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/_authenticated/invoices/$id")({
-  head: () => ({ meta: [{ title: "Invoice · Ledgerly" }] }),
+  head: () => ({ meta: [{ title: "Invoice · InvoiceVision" }] }),
   component: InvoiceDetail,
 });
 
