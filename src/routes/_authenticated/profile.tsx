@@ -135,7 +135,7 @@ function Profile() {
         <CardHeader><CardTitle>Profile photo</CardTitle><CardDescription>Shown next to your name across InvoiceVision.</CardDescription></CardHeader>
         <CardContent>
           <AvatarUploader url={data.avatarUrl} initials={initials} busy={upload.isPending || remove.isPending}
-            onUpload={(b) => upload.mutateAsync(b)} onRemove={() => remove.mutateAsync()} />
+            onUpload={async (b) => { await upload.mutateAsync(b); }} onRemove={async () => { await remove.mutateAsync(); }} />
         </CardContent>
       </Card>
 
