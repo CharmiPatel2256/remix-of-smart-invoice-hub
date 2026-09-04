@@ -432,13 +432,65 @@ export const getProfile = createServerFn({ method: "GET" })
   .handler(async ({ context }) => {
     const { data } = await context.supabase.from("profiles").select("*").eq("id", context.userId).single();
     const { data: roles } = await context.supabase.from("user_roles").select("role").eq("user_id", context.userId);
-    return { profile: data, roles: (roles ?? []).map((r) => r.role) };
+    const { data: userRes } = await context.supabase.auth.getUser();
+    let avatarUrl: string | null = null;
+    if (data?.avatar_url) {
+      const { data: signed } = await context.supabase.storage.from("avatars").createSignedUrl(data.avatar_url, 60 * 60);
+      avatarUrl = signed?.signedUrl ?? null;
+    }
+    return {
+      profile: data,
+      roles: (roles ?? []).map((r) => r.role),
+      avatarUrl,
+      emailVerified: Boolean(userRes?.user?.email_confirmed_at),
+      pendingEmail: userRes?.user?.new_email ?? null,
+    };
   });
+
+const profileUpdate = z.object({
+  name: z.string().trim().min(2).max(50).nullable().optional(),
+  phone_country_code: z.string().regex(/^\+\d{1,4}$/).nullable().optional(),
+  phone_number: z.string().regex(/^[\d\s-]{4,20}$/).nullable().optional(),
+  phone_is_primary: z.boolean().optional(),
+  requested_role: z.enum(["user", "admin", "accountant", "manager"]).nullable().optional(),
+});
 
 export const updateProfile = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => z.object({ name: z.string().max(100).nullable() }).parse(d))
+  .inputValidator((d: unknown) => profileUpdate.parse(d))
   .handler(async ({ data, context }) => {
-    await context.supabase.from("profiles").update({ name: data.name }).eq("id", context.userId);
+    const { error } = await context.supabase.from("profiles").update(data).eq("id", context.userId);
+    if (error) throw error;
+    return { ok: true };
+  });
+
+export const createAvatarUploadUrl = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    const path = `${context.userId}/avatar_${Date.now()}.jpg`;
+    const { data: signed, error } = await context.supabase.storage.from("avatars").createSignedUploadUrl(path);
+    if (error) throw error;
+    return { path, token: signed.token };
+  });
+
+export const setAvatar = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: unknown) => z.object({ path: z.string().nullable() }).parse(d))
+  .handler(async ({ data, context }) => {
+    const { data: prev } = await context.supabase.from("profiles").select("avatar_url").eq("id", context.userId).single();
+    if (prev?.avatar_url && prev.avatar_url !== data.path) {
+      await context.supabase.storage.from("avatars").remove([prev.avatar_url]);
+    }
+    const { error } = await context.supabase.from("profiles").update({ avatar_url: data.path }).eq("id", context.userId);
+    if (error) throw error;
+    return { ok: true };
+  });
+
+export const requestEmailChange = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: unknown) => z.object({ email: z.string().trim().email().max(255) }).parse(d))
+  .handler(async ({ data, context }) => {
+    const { error } = await context.supabase.auth.updateUser({ email: data.email });
+    if (error) throw new Error(error.message);
     return { ok: true };
   });
