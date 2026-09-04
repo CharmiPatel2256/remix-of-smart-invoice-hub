@@ -184,6 +184,10 @@ export type Database = {
           email: string | null
           id: string
           name: string | null
+          phone_country_code: string | null
+          phone_is_primary: boolean
+          phone_number: string | null
+          requested_role: string | null
           updated_at: string
         }
         Insert: {
@@ -192,6 +196,10 @@ export type Database = {
           email?: string | null
           id: string
           name?: string | null
+          phone_country_code?: string | null
+          phone_is_primary?: boolean
+          phone_number?: string | null
+          requested_role?: string | null
           updated_at?: string
         }
         Update: {
@@ -200,6 +208,10 @@ export type Database = {
           email?: string | null
           id?: string
           name?: string | null
+          phone_country_code?: string | null
+          phone_is_primary?: boolean
+          phone_number?: string | null
+          requested_role?: string | null
           updated_at?: string
         }
         Relationships: []
@@ -239,7 +251,7 @@ export type Database = {
       }
     }
     Enums: {
-      app_role: "admin" | "manager" | "user"
+      app_role: "admin" | "manager" | "user" | "accountant"
       invoice_status: "draft" | "pending" | "approved" | "rejected" | "paid"
     }
     CompositeTypes: {
@@ -368,7 +380,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      app_role: ["admin", "manager", "user"],
+      app_role: ["admin", "manager", "user", "accountant"],
       invoice_status: ["draft", "pending", "approved", "rejected", "paid"],
     },
   },
