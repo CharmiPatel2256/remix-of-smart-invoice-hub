@@ -92,9 +92,9 @@ function Shell() {
       <main className="flex-1 min-w-0">
         <header className="h-14 border-b flex items-center gap-3 px-4 sticky top-0 bg-background/95 backdrop-blur z-30">
           <SidebarTrigger />
-          <div className="text-sm text-muted-foreground truncate">{user.email}</div>
-          <div className="ml-auto">
+          <div className="ml-auto flex items-center gap-2">
             <Button variant="ghost" size="sm" asChild><Link to="/invoices/upload">+ New invoice</Link></Button>
+            <HeaderIdentity fallbackEmail={user.email ?? ""} />
           </div>
         </header>
         <div className="p-4 md:p-8 max-w-7xl mx-auto">
